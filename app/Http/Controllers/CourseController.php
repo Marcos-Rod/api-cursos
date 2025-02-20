@@ -29,6 +29,12 @@ class CourseController extends Controller
         ->latest('id')
         ->paginate(10);
 
-        return $courses;
+        if($courses && $courses->count() > 0){
+            return $courses;
+        }
+
+        return response()->json([
+            'message' => 'This course no exist'
+        ], 404);
     }
 }
