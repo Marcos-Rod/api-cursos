@@ -20,4 +20,10 @@ class Course extends Model
     {
         return $this->belongsTo(Level::class);
     }
+
+    //Relacion muchos a muchos
+    public function students()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

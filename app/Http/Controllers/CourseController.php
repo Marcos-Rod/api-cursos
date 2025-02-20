@@ -37,4 +37,12 @@ class CourseController extends Controller
             'message' => 'This course no exist'
         ], 404);
     }
+
+    public function enrolled(Course $course){
+        $course->students()->attach(auth()->user()->id);
+
+        return response()->json([
+            'message' => 'The user has been subscribed'
+        ], 200);
+    }
 }
